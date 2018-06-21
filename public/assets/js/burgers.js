@@ -1,14 +1,13 @@
-$(function() {
+$(document).ready(function() {
+    console.log('page loaded');
     $(".change-devour").on("click", function(event) {
-        console.log("clicked");
-
         var id = $(this).data("id");
         var newDevour = $(this).data("newdevour");
 
         var newDevourState = {
-            devoured: newDevourState
+            devoured: newDevour
         };
-
+        console.log("hi");
         $.ajax("/api/burgers" + id, {
             type: "PUT",
             data: newDevourState
@@ -20,8 +19,6 @@ $(function() {
     });
 
     $(".create-form").on("submit", function(event) {
-        console.log("clicked");
-        
         event.preventDefault();
 
         var newBurger = {
