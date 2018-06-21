@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     console.log('page loaded');
     $(".change-devour").on("click", function(event) {
         var id = $(this).data("id");
@@ -8,7 +8,7 @@ $(document).ready(function() {
             devoured: newDevour
         };
         console.log("hi");
-        $.ajax("/api/burgers" + id, {
+        $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: newDevourState
         }).then(
@@ -20,6 +20,7 @@ $(document).ready(function() {
 
     $(".create-form").on("submit", function(event) {
         event.preventDefault();
+        console.log("hi");
 
         var newBurger = {
             burger_name: $("#burger").val().trim(),
@@ -31,6 +32,7 @@ $(document).ready(function() {
             data: newBurger
         }).then(
             function() {
+                console.log("hello");
                 location.reload();
             }
         );
